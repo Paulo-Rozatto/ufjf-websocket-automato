@@ -1,15 +1,22 @@
 package br.ufjf.ufjfwebsocketautomato;
 
+import org.springframework.web.util.HtmlUtils;
+
 import lombok.Getter;
+import lombok.Setter;
 
 public class Greeting {
     @Getter
-    private String content;
-  
-    public Greeting() {
+    @Setter
+    private String name;
+
+    public Greeting() {}
+
+    public Greeting(String name) {
+        this.name = name;
     }
-  
-    public Greeting(String content) {
-      this.content = content;
+
+    public String greet() {
+        return "Hello, " + HtmlUtils.htmlEscape(this.name) + "!";
     }
-  }
+}
