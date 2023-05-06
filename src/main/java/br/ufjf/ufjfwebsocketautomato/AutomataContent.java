@@ -2,14 +2,14 @@ package br.ufjf.ufjfwebsocketautomato;
 
 import lombok.Getter;
 
-public class Messenger {
+public class AutomataContent {
     @Getter
     private String content;
   
-    public Messenger() {
+    public AutomataContent() {
     }
   
-    public Messenger(String content) {
+    public AutomataContent(String content) {
       this.content = content;
     }
   }
