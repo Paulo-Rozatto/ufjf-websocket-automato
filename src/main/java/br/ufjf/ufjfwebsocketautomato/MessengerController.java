@@ -13,27 +13,20 @@ import lombok.val;
 @Controller
 public class MessengerController {
 
-  @MessageMapping("/hello")
-  @SendTo("/data/greetings")
-  public Messenger greeting(Greeting greeting) throws Exception {
-    Thread.sleep(1000); // simulated delay
-    return new Messenger(greeting.greet());
-  }
-
   @MessageMapping("/sample")
   @SendTo("/data/sample")
-  public Messenger getExample(Greeting greeting) {
+  public AutomataContent getExample(Request request) {
     var res = "";
 
     try {
-      val fileName = "automata/" + greeting.getName() + ".json";
+      val fileName = "automata/" + request.getName() + ".json";
       val is = new ClassPathResource(fileName).getInputStream();
       res = IOUtils.toString(is, "UTF-8");
     } catch (IOException e) {
       res = "Not found";
     }
     
-    return new Messenger(res);
+    return new AutomataContent(res);
   }
 
 }
